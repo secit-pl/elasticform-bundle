@@ -1,0 +1,9 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    SecIT\ElasticFormBundle\Form\FormFactory:
+        class: SecIT\ElasticFormBundle\Form\FormFactory
+#        public: true
