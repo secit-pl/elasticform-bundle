@@ -2,7 +2,7 @@
     "name": "secit-pl/elasticform-bundle",
     "type": "symfony-bundle",
     "description": ".",
-    "keywords": ["symfony", "form""],
+    "keywords": ["symfony", "form"],
     "homepage": "http://secit.pl",
     "license": "MIT",
     "authors": [
