@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SecIT\ElasticFormBundle\Form\FieldType;
+namespace SecIT\ElasticFormBundle\ElasticForm\FieldType;
 
 use Symfony\Component\OptionsResolver\OptionsResolver as SymfonyOptionsResolver;
 use Symfony\Component\Validator\Constraints;
@@ -47,6 +47,9 @@ class OptionsResolver extends SymfonyOptionsResolver
      */
     public function resolve(array $options = [])
     {
+        // ignore extra options
+        $options = array_intersect_key($options, array_flip($this->getDefinedOptions()));
+
         $data = parent::resolve($options);
 
         if ($data['required']) {

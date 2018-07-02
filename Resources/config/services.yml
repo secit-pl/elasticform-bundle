@@ -4,6 +4,10 @@ services:
         autoconfigure: true
         public: false
 
-    SecIT\ElasticFormBundle\Form\FormFactory:
-        class: SecIT\ElasticFormBundle\Form\FormFactory
-#        public: true
+    _instanceof:
+        SecIT\ElasticFormBundle\ElasticForm\FieldType\TypeInterface:
+            tags: [elasticform.field_type]
+
+    SecIT\ElasticFormBundle\:
+        resource: '../../*'
+        exclude: '../../{DependencyInjection,Entity,Tests,Resources}'

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SecIT\ElasticFormBundle\Form\FieldType;
+namespace SecIT\ElasticFormBundle\ElasticForm\FieldType;
 
-use SecIT\ElasticFormBundle\Form\FieldType\ChoiceType\ChoiceInterface;
+use SecIT\ElasticFormBundle\ElasticForm\FieldType\ChoiceType\ChoiceInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType as SymfonyChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints;

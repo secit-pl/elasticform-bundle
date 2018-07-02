@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SecIT\ElasticFormBundle\Form\FieldType\ChoiceType;
+namespace SecIT\ElasticFormBundle\ElasticForm\FieldType\ChoiceType;
 
 /**
  * Interface ChoiceInterface.

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace SecIT\ElasticFormBundle\Form\FieldType;
+namespace SecIT\ElasticFormBundle\ElasticForm\FieldType;
 
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\DataTransformerInterface;
@@ -14,6 +14,13 @@ use Symfony\Component\Form\DataTransformerInterface;
  */
 interface TypeInterface extends DataTransformerInterface
 {
+    /**
+     * Get type name. This value will be used as a unique type identifier.
+     *
+     * @return string
+     */
+    public function getName(): string;
+
     /**
      * Get form builder.
      *

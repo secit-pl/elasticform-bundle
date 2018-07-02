@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace SecIT\ElasticFormBundle\Form\FieldType;
+namespace SecIT\ElasticFormBundle\ElasticForm\FieldType;
 
+use Doctrine\Common\Util\Inflector;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -45,6 +46,17 @@ abstract class AbstractType implements TypeInterface
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getName(): string
+    {
+        $name = (new \ReflectionClass($this))->getShortName();
+        $name = Inflector::tableize(substr($name, 0, -4));
+
+        return $name;
     }
 
     /**

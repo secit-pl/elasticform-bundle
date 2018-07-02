@@ -13,10 +13,15 @@
     ],
     "require": {
         "php": ">=7.1.0",
+        "secit-pl/entity-translation-bundle": "~1.0",
         "symfony/framework-bundle": "~4.0",
         "symfony/dependency-injection": "~4.0",
         "symfony/options-resolver": "~4.0",
-        "symfony/form": "~4.0"
+        "symfony/form": "~4.0",
+        "symfony/validator": "~4.0",
+        "doctrine/doctrine-bundle": "^1.6.10",
+        "doctrine/orm": "^2.5.11",
+        "doctrine/inflector": "~1.2"
     },
     "require-dev": {
         "phpunit/phpunit": "@stable"
