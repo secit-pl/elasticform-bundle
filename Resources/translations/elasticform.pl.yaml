@@ -1,0 +1,80 @@
+field:
+  string:
+    options_form:
+      max_length:
+        label: Maksymalna długość treści
+
+      min_length:
+        label: Minimalna długość treści
+
+      multi_line:
+        label: Pole tekstowe wielolinijkowe
+
+      placeholder:
+        label: Podpowiedź przy pustym polu
+
+form:
+  attribute_configuration:
+    fields:
+      attribute_key:
+        label: Klucz
+
+      options:
+        label: Ustawienia
+        fields:
+          attr:
+            label: Dodatkowe atrybuty HTML pola
+
+          label_attr:
+            label: Dodatkowe atrybuty HTML etykiety pola
+
+      required:
+        label: Atrybut wymagany
+
+      save:
+        label: Zapisz
+
+      translations:
+        label: Tłumaczenia
+        fields:
+          name:
+            label: Nazwa atrybutu
+
+  attribute_group:
+    attributes:
+      label: Atrybuty
+      fields:
+        attribute:
+          label: Atrybut
+
+        position:
+          label: Kolejność
+
+    child_groups:
+      label: Podgrupy
+      fields:
+        group:
+          label: Grupa
+
+        position:
+          label: Kolejność
+
+    group_key:
+      label: Klucz
+
+    save:
+      label: Zapisz
+
+    translations:
+      label: Tłumaczenia
+      fields:
+        name:
+          label: Nazwa grupy
+
+  key_value:
+    fields:
+      key:
+        label: Atrybut
+
+      value:
+        label: Wartość

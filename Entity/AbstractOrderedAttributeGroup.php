@@ -28,14 +28,14 @@ abstract class AbstractOrderedAttributeGroup
     /**
      * @var null|AbstractAttributeGroup
      *
-     * ORM\ManyToOne(targetEntity="Database\Entity\AttributeGroup", inversedBy="childGroups", cascade={"persist"})
+     * ORM\ManyToOne(targetEntity="SecIT\ElasticFormBundle\Entity\AbstractAttributeGroup", inversedBy="childGroups", cascade={"persist"})
      */
     protected $parentGroup;
 
     /**
      * @var null|AbstractAttributeGroup
      *
-     * ORM\ManyToOne(targetEntity="Database\Entity\AttributeGroup", inversedBy="parentGroups", cascade={"persist"})
+     * ORM\ManyToOne(targetEntity="SecIT\ElasticFormBundle\Entity\AbstractAttributeGroup", inversedBy="parentGroups", cascade={"persist"})
      */
     protected $childGroup;
 
@@ -86,9 +86,9 @@ abstract class AbstractOrderedAttributeGroup
     /**
      * Get attribute.
      *
-     * @return null|AttributeGroup
+     * @return null|AbstractAttributeGroup
      */
-    public function getChildGroup(): ?AttributeGroup
+    public function getChildGroup(): ?AbstractAttributeGroup
     {
         return $this->childGroup;
     }

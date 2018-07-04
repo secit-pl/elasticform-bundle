@@ -28,14 +28,14 @@ abstract class AbstractOrderedAttribute
     /**
      * @var null|AbstractAttributeGroup
      *
-     * ORM\ManyToOne(targetEntity="Database\Entity\Attribute\AttributeGroup", inversedBy="attributes")
+     * ORM\ManyToOne(targetEntity="SecIT\ElasticFormBundle\Entity\AbstractAttributeGroup", inversedBy="attributes")
      */
     protected $group;
 
     /**
      * @var null|AbstractAttribute
      *
-     * ORM\ManyToOne(targetEntity="Database\Entity\Attribute", inversedBy="orderedAttributeGroups", cascade={"persist"})
+     * ORM\ManyToOne(targetEntity="SecIT\ElasticFormBundle\Entity\AbstractAttribute", inversedBy="orderedAttributeGroups", cascade={"persist"})
      */
     protected $attribute;
 

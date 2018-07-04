@@ -1,0 +1,80 @@
+field:
+  string:
+    options_form:
+      max_length:
+        label: Maximum length
+
+      min_length:
+        label: Minimum length
+
+      multi_line:
+        label: Multi line text field
+
+      placeholder:
+        label: Placeholder
+
+form:
+  attribute_configuration:
+    fields:
+      attribute_key:
+        label: Key
+
+      options:
+        label: Settings
+        fields:
+          attr:
+            label: Additional field HTML attributes
+
+          label_attr:
+            label: Additional label HTML attributes
+
+      required:
+        label: Required
+
+      save:
+        label: Save
+
+      translations:
+        label: Translations
+        fields:
+          name:
+            label: Attribute name
+
+  attribute_group:
+    attributes:
+      label: Attributes
+      fields:
+        attribute:
+          label: Attribute
+
+        position:
+          label: Position
+
+    child_groups:
+      label: Subgroups
+      fields:
+        group:
+          label: Group
+
+        position:
+          label: Position
+
+    group_key:
+      label: Key
+
+    save:
+      label: Save
+
+    translations:
+      label: Translations
+      fields:
+        name:
+          label: Group name
+
+  key_value:
+    fields:
+      key:
+        label: Attribute
+
+      value:
+        label: Value

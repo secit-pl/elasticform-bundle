@@ -47,6 +47,7 @@ abstract class AbstractAttribute implements TranslatableInterface
      *
      * @Assert\NotBlank()
      * @Assert\Length(max = 128)
+     * @Assert\Type("lower")
      */
     protected $attributeKey;
 
@@ -57,8 +58,6 @@ abstract class AbstractAttribute implements TranslatableInterface
      *
      * @Assert\NotBlank()
      * @Assert\Length(max = 64)
-     *
-     * @todo validate field type value
      */
     protected $type;
 
@@ -81,7 +80,7 @@ abstract class AbstractAttribute implements TranslatableInterface
     /**
      * @var Collection|AbstractOrderedAttributeGroup[]
      *
-     * ORM\OneToMany(targetEntity="Database\Entity\Attribute\AttributeGroup\OrderedAttribute", mappedBy="attribute", cascade={"all"})
+     * ORM\OneToMany(targetEntity="SecIT\ElasticFormBundle\Entity\AbstractOrderedAttributeGroup", mappedBy="attribute", cascade={"all"})
      */
     protected $orderedAttributeGroups;
 
@@ -219,8 +218,6 @@ abstract class AbstractAttribute implements TranslatableInterface
      * @param array $options
      *
      * @return AbstractAttribute
-     *
-     * @todo: options validation
      */
     public function setOptions(array $options): self
     {

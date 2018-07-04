@@ -11,6 +11,9 @@ use Symfony\Component\Validator\Constraints;
  * Class StringType.
  *
  * @author Tomasz Gemza
+ *
+ * @todo: default value
+ * @todo: input hint (symfony 4.1)
  */
 class OptionsResolver extends SymfonyOptionsResolver
 {
@@ -34,7 +37,6 @@ class OptionsResolver extends SymfonyOptionsResolver
         $this->setAllowedTypes('label_attr', 'array');
         $this->setAllowedTypes('required', 'bool');
         $this->setAllowedTypes('attr', 'array');
-        $this->setAllowedTypes('constraints', 'array');
         $this->setAllowedTypes('constraints', 'array');
         $this->setAllowedTypes('translation_domain', ['null', 'string']);
 

@@ -5,9 +5,16 @@ declare(strict_types=1);
 namespace SecIT\ElasticFormBundle\ElasticForm\FieldType;
 
 use Doctrine\Common\Util\Inflector;
+use SecIT\ElasticFormBundle\Entity\AbstractAttribute;
+use SecIT\ElasticFormBundle\Form\AttributeConfigurationType;
 use Symfony\Component\Form\CallbackTransformer;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Validator\Constraints\EqualTo;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 /**
  * Class AbstractType.
@@ -81,6 +88,14 @@ abstract class AbstractType implements TypeInterface
         }
 
         return $value;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getConfigurationFormBuilder($data = null, array $options = []): FormBuilderInterface
+    {
+        return $this->formFactory->createBuilder(AttributeConfigurationType::class, $data, $options);
     }
 
     /**

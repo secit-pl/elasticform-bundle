@@ -22,11 +22,23 @@ interface TypeInterface extends DataTransformerInterface
     public function getName(): string;
 
     /**
-     * Get form builder.
+     * Get form builder. This method should be used to get the form builder used to
+     * create a form which will be used as a data input.
      *
      * @param array $options
      *
      * @return FormBuilderInterface
      */
     public function getFormBuilder(array $options): FormBuilderInterface;
+
+    /**
+     * Get configuration form builder. This method should be used to create a form
+     * builder used to setup and configure specivied form field.
+     *
+     * @param null|mixed $data
+     * @param array      $options
+     *
+     * @return FormBuilderInterface
+     */
+    public function getConfigurationFormBuilder($data = null, array $options = []): FormBuilderInterface;
 }

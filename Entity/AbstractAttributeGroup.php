@@ -43,25 +43,14 @@ abstract class AbstractAttributeGroup implements TranslatableInterface
      *
      * @Assert\NotBlank()
      * @Assert\Length(max = 64)
-     * @Assert\Type("alnum")
      * @Assert\Type("lower")
      */
     protected $groupKey;
 
     /**
-     * @var null|string
-     *
-     * @ORM\Column(type="string", length=64)
-     *
-     * @Assert\NotBlank()
-     * @Assert\Length(max = 64)
-     */
-    protected $name;
-
-    /**
      * @var Collection|AbstractOrderedAttribute[]
      *
-     * ORM\OneToMany(targetEntity="Database\Entity\Attribute\AttributeGroup\OrderedAttribute", mappedBy="group", cascade={"persist"}, orphanRemoval=true)
+     * ORM\OneToMany(targetEntity="SecIT\ElasticFormBundle\Entity\AbstractOrderedAttribute", mappedBy="group", cascade={"persist"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      *
      * @Assert\Valid()

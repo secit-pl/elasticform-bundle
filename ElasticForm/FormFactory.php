@@ -145,4 +145,28 @@ class FormFactory
 
         return $this->fieldTypes[$fieldType]->getFormBuilder($options);
     }
+
+    /**
+     * Create attribute form builder.
+     *
+     * @param AbstractAttribute $attribute
+     * @param array             $options
+     *
+     * @return FormBuilderInterface
+     *
+     * @throws \LogicException
+     */
+    public function createAttributeConfigurationFormBuilder(AbstractAttribute $attribute, array $options = []): FormBuilderInterface
+    {
+        $fieldType = $attribute->getType();
+        if (!array_key_exists($fieldType, $this->fieldTypes)) {
+            throw new \LogicException(sprintf(
+                'Invalid attribute type (%s). Allowed types are %s.',
+                $fieldType,
+                implode(', ', array_keys($this->getFieldTypesNames()))
+            ));
+        }
+
+        return $this->fieldTypes[$fieldType]->getConfigurationFormBuilder($attribute, $options);
+    }
 }

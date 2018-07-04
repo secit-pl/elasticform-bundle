@@ -23,7 +23,7 @@ abstract class AbstractAttributeGroupWithSubgroups extends AbstractAttributeGrou
     /**
      * @var Collection|AbstractOrderedAttributeGroup[]
      *
-     * ORM\OneToMany(targetEntity="Database\Entity\Attribute\AttributeGroup\OrderedGroup", mappedBy="childGroup", cascade={"persist"})
+     * ORM\OneToMany(targetEntity="SecIT\ElasticFormBundle\Entity\AbstractOrderedAttributeGroup", mappedBy="childGroup", cascade={"persist"})
      * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $parentGroups;
@@ -31,7 +31,7 @@ abstract class AbstractAttributeGroupWithSubgroups extends AbstractAttributeGrou
     /**
      * @var Collection|AbstractOrderedAttributeGroup[]
      *
-     * ORM\OneToMany(targetEntity="Database\Entity\Attribute\AttributeGroup\OrderedGroup", mappedBy="parentGroup", cascade={"persist"}, orphanRemoval=true)
+     * ORM\OneToMany(targetEntity="SecIT\ElasticFormBundle\Entity\AbstractOrderedAttributeGroup", mappedBy="parentGroup", cascade={"persist"}, orphanRemoval=true)
      * @ORM\OrderBy({"position" = "ASC"})
      */
     protected $childGroups;
