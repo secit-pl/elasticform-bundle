@@ -8,6 +8,7 @@ use Doctrine\Common\Util\Inflector;
 use SecIT\ElasticFormBundle\Entity\AbstractAttribute;
 use SecIT\ElasticFormBundle\Form\AttributeConfigurationType;
 use Symfony\Component\Form\CallbackTransformer;
+use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -113,9 +114,25 @@ abstract class AbstractType implements TypeInterface
 
         return $this->formFactory
             ->createNamedBuilder($name, $type, null, $options)
-            ->addModelTransformer(new CallbackTransformer(
-                [$this, 'transform'],
-                [$this, 'reverseTransform']
-            ));
+            ->addModelTransformer($this->getModelTransformer($options));
+    }
+
+    /**
+     * Get model transformer.
+     *
+     * @param array $options
+     *
+     * @return DataTransformerInterface
+     */
+    protected function getModelTransformer(array $options = []): DataTransformerInterface
+    {
+        return new CallbackTransformer(
+            function ($value) use ($options) {
+                return $this->transform($value, $options);
+            },
+            function ($value) use ($options) {
+                return $this->reverseTransform($value, $options);
+            }
+        );
     }
 }

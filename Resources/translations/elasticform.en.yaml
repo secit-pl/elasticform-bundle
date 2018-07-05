@@ -1,5 +1,51 @@
 field:
+  choice:
+    name: Choices list
+    options_form:
+      choices:
+        label: Choices
+
+      expanded:
+        label: Expanded
+
+      multiple:
+        label: Multiselect
+
+      max_choices:
+        label: Maximum choices count
+
+      min_choices:
+        label: Minimum choices count
+
+  date:
+    name: Date
+    options_form:
+      max_date:
+        label: Maximum date
+
+      min_date:
+        label: Minimum date
+
+      placeholder:
+        label: Placeholder
+
+  number:
+    name: Number field
+    options_form:
+      max_value:
+        label: Maximum value
+
+      min_value:
+        label: Minimum value
+
+      scale:
+        label: Number scale
+
+      placeholder:
+        label: Placeholder
+
   string:
+    name: Text field
     options_form:
       max_length:
         label: Maximum length
@@ -12,6 +58,9 @@ field:
 
       placeholder:
         label: Placeholder
+
+  yes_no:
+    name: Yes/No
 
 form:
   attribute_configuration:

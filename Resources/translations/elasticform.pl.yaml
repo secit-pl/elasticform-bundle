@@ -1,5 +1,51 @@
 field:
+  choice:
+    name: Lista wyboru
+    options_form:
+      choices:
+        label: Opcje do wyboru
+
+      expanded:
+        label: Wyświetlaj jako przyciski
+
+      multiple:
+        label: Lista wielokrotnego wyboru
+
+      max_choices:
+        label: Maksymalna ilość elementów do wyboru
+
+      min_choices:
+        label: Minimalna ilość elementów do wyboru
+
+  date:
+    name: Data
+    options_form:
+      max_date:
+        label: Maksymalna data
+
+      min_date:
+        label: Minimalna data
+
+      placeholder:
+        label: Podpowiedź przy pustym polu
+
+  number:
+    name: Pole liczbowe
+    options_form:
+      max_value:
+        label: Maksymalna wartość
+
+      min_value:
+        label: Minimalna wartość
+
+      scale:
+        label: Ilość miejsc po przecinku
+
+      placeholder:
+        label: Podpowiedź przy pustym polu
+
   string:
+    name: Pole tekstowe
     options_form:
       max_length:
         label: Maksymalna długość treści
@@ -12,6 +58,9 @@ field:
 
       placeholder:
         label: Podpowiedź przy pustym polu
+
+  yes_no:
+    name: Tak/Nie
 
 form:
   attribute_configuration:
