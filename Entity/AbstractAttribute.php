@@ -85,6 +85,23 @@ abstract class AbstractAttribute implements TranslatableInterface
     protected $orderedAttributeGroups;
 
     /**
+     * @var Collection|AbstractAttributeValue[]
+     *
+     * ORM\OneToMany(targetEntity="SecIT\ElasticFormBundle\Entity\AbstractAttributeValue", mappedBy="attribute", cascade={"all"})
+     */
+    protected $values;
+
+    /**
+     * Get values.
+     *
+     * @return Collection|AbstractAttributeValue[]
+     */
+    public function getProductsValues(): Collection
+    {
+        return $this->values;
+    }
+
+    /**
      * Attribute constructor.
      */
     public function __construct()
