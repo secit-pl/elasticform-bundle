@@ -92,16 +92,6 @@ abstract class AbstractAttribute implements TranslatableInterface
     protected $values;
 
     /**
-     * Get values.
-     *
-     * @return Collection|AbstractAttributeValue[]
-     */
-    public function getProductsValues(): Collection
-    {
-        return $this->values;
-    }
-
-    /**
      * Attribute constructor.
      */
     public function __construct()
@@ -269,5 +259,15 @@ abstract class AbstractAttribute implements TranslatableInterface
         $this->orderedAttributeGroups = $orderedAttributeGroups;
 
         return $this;
+    }
+
+    /**
+     * Get values.
+     *
+     * @return Collection|AbstractAttributeValue[]
+     */
+    public function getValues(): Collection
+    {
+        return $this->values;
     }
 }
