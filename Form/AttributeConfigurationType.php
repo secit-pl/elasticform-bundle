@@ -9,6 +9,7 @@ use SecIT\ElasticFormBundle\Form\AttributeConfiguration\KeyValueType;
 use SecIT\ElasticFormBundle\Form\AttributeConfiguration\TranslationType;
 use SecIT\ElasticFormBundle\Helper\EntityMetadataTrait;
 use SecIT\EntityTranslationBundle\Form\Type\ResourceTranslationsType;
+use SecIT\EntityTranslationBundle\Translations\TranslationLocaleProvider;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\CallbackTransformer;
@@ -38,13 +39,20 @@ class AttributeConfigurationType extends AbstractType
     protected $doctrine;
 
     /**
-     * AttributeGroupType constructor.
-     *
-     * @param RegistryInterface $doctrine
+     * @var TranslationLocaleProvider
      */
-    public function __construct(RegistryInterface $doctrine)
+    protected $translationLocaleProvider;
+
+    /**
+     * AttributeConfigurationType constructor.
+     *
+     * @param RegistryInterface         $doctrine
+     * @param TranslationLocaleProvider $translationLocaleProvider
+     */
+    public function __construct(RegistryInterface $doctrine, TranslationLocaleProvider $translationLocaleProvider)
     {
         $this->doctrine = $doctrine;
+        $this->translationLocaleProvider = $translationLocaleProvider;
     }
 
     /**
@@ -66,7 +74,7 @@ class AttributeConfigurationType extends AbstractType
                 ],
             ])
             ->add('translations', ResourceTranslationsType::class, [
-                'label' => 'form.attribute_configuration.fields.translations.label',
+                'label' => $this->translationLocaleProvider->hasMultipleLocalesCodes() ? 'form.attribute_configuration.fields.translations.label' : false,
                 'entry_type' => TranslationType::class,
                 'entry_options' => [
                     'data_class' => $this->getTargetEntityClass(get_class($attribute), 'translations'),

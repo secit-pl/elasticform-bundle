@@ -11,6 +11,7 @@ use SecIT\ElasticFormBundle\Form\AttributeGroup\OrderedGroupType;
 use SecIT\ElasticFormBundle\Form\AttributeGroup\TranslationType;
 use SecIT\ElasticFormBundle\Helper\EntityMetadataTrait;
 use SecIT\EntityTranslationBundle\Form\Type\ResourceTranslationsType;
+use SecIT\EntityTranslationBundle\Translations\TranslationLocaleProvider;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -33,13 +34,20 @@ class AttributeGroupType extends AbstractType
     protected $doctrine;
 
     /**
+     * @var TranslationLocaleProvider
+     */
+    protected $translationLocaleProvider;
+
+    /**
      * AttributeGroupType constructor.
      *
-     * @param RegistryInterface $doctrine
+     * @param RegistryInterface         $doctrine
+     * @param TranslationLocaleProvider $translationLocaleProvider
      */
-    public function __construct(RegistryInterface $doctrine)
+    public function __construct(RegistryInterface $doctrine, TranslationLocaleProvider $translationLocaleProvider)
     {
         $this->doctrine = $doctrine;
+        $this->translationLocaleProvider = $translationLocaleProvider;
     }
 
     /**
@@ -64,7 +72,7 @@ class AttributeGroupType extends AbstractType
                 'disabled' => null !== $group->getId(),
             ])
             ->add('translations', ResourceTranslationsType::class, [
-                'label' => 'form.attribute_group.translations.label',
+                'label' => $this->translationLocaleProvider->hasMultipleLocalesCodes() ? 'form.attribute_group.translations.label' : false,
                 'entry_type' => TranslationType::class,
                 'entry_options' => [
                     'data_class' => $this->getTargetEntityClass($groupClass, 'translations'),
