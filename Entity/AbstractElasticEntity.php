@@ -40,6 +40,15 @@ abstract class AbstractElasticEntity
     abstract public function getAttributeValueClass(): string;
 
     /**
+     * Get attribute value class.
+     *
+     * @param string $key
+     *
+     * @return AbstractAttribute
+     */
+    abstract public function getAttributeByKey(string $key): AbstractAttribute;
+
+    /**
      * Get dynamic attribute value.
      *
      * @param string $attributeKey
@@ -188,7 +197,7 @@ abstract class AbstractElasticEntity
                 ));
             }
 
-            $attributeValue->setAttribute($this->getType()->getAttributeByKey($attributeKey))
+            $attributeValue->setAttribute($this->getAttributeByKey($attributeKey))
                 ->setValue($value);
 
             $this->addAttributeValue($attributeValue);
