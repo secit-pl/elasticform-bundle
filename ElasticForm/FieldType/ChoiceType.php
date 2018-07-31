@@ -61,18 +61,15 @@ class ChoiceType extends AbstractType
     public function valueToString(AbstractAttribute $attribute, $value): string
     {
         $options = $this->optionsResolver->resolve(['name' => 'x', 'label' => 'x'] + $attribute->getOptions());
-        $choices = $options['choices'];
-
-        $strings = [];
-
-        $values = is_array($value) ? $value : [$value];
-        foreach ($values as $value) {
-            if (isset($choices[$value])) {
-                $strings[] = $choices[$value]['value'];
-            }
+        $choices = [];
+        foreach ($options['choices'] as $choice) {
+            $choices[$choice['key']] = $choice['value'];
         }
 
-        return implode(', ', $strings);
+        $values = is_array($value) ? $value : [$value];
+        $values = array_flip($values);
+
+        return implode(', ', array_intersect_key($choices, $values));
     }
 
     /**
