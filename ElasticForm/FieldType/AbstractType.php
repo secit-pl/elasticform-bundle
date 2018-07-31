@@ -9,13 +9,9 @@ use SecIT\ElasticFormBundle\Entity\AbstractAttribute;
 use SecIT\ElasticFormBundle\Form\AttributeConfigurationType;
 use Symfony\Component\Form\CallbackTransformer;
 use Symfony\Component\Form\DataTransformerInterface;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\Validator\Constraints\EqualTo;
-use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Translation\TranslatorInterface;
 
 /**
  * Class AbstractType.
@@ -35,14 +31,21 @@ abstract class AbstractType implements TypeInterface
     protected $formFactory;
 
     /**
+     * @var TranslatorInterface
+     */
+    protected $translator;
+
+    /**
      * AbstractType constructor.
      *
      * @param FormFactoryInterface $formFactory
+     * @param TranslatorInterface  $translator
      */
-    public function __construct(FormFactoryInterface $formFactory)
+    public function __construct(FormFactoryInterface $formFactory, TranslatorInterface $translator)
     {
         $this->optionsResolver = new OptionsResolver();
         $this->formFactory = $formFactory;
+        $this->translator = $translator;
 
         $this->configureOptions($this->optionsResolver);
     }
@@ -89,6 +92,27 @@ abstract class AbstractType implements TypeInterface
         }
 
         return $value;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function valueToString(AbstractAttribute $attribute, $value): string
+    {
+        if (null === $value) {
+            return '';
+        } elseif ($value instanceof \DateTime) {
+            return $value->format('Y-m-d');
+        } elseif (is_array($value)) {
+            $return = [];
+            foreach ($value as $val) {
+                $return[] = $this->valueToString($val);
+            }
+
+            return implode(', ', $return);
+        }
+
+        return (string) $value;
     }
 
     /**

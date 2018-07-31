@@ -61,6 +61,9 @@ field:
 
   yes_no:
     name: Yes/No
+    string_value:
+      no: No
+      yes: Yes
 
 form:
   attribute_configuration:

@@ -61,6 +61,9 @@ field:
 
   yes_no:
     name: Tak/Nie
+    string_value:
+      no: Nie
+      yes: Tak
 
 form:
   attribute_configuration:

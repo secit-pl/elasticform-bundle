@@ -83,6 +83,26 @@ class FormFactory
     }
 
     /**
+     * Get field type.
+     *
+     * @param string $name
+     *
+     * @return TypeInterface
+     */
+    public function getFieldType(string $name): TypeInterface
+    {
+        if (!array_key_exists($name, $this->fieldTypes)) {
+            throw new \LogicException(sprintf(
+                'Invalid attribute type (%s). Allowed types are %s.',
+                $name,
+                implode(', ', array_keys($this->getFieldTypesNames()))
+            ));
+        }
+
+        return$this->fieldTypes[$name];
+    }
+
+    /**
      * Create attribute group form builder.
      *
      * @param AbstractAttributeGroup $group
@@ -121,15 +141,6 @@ class FormFactory
      */
     public function createAttributeFormBuilder(AbstractAttribute $attribute): FormBuilderInterface
     {
-        $fieldType = $attribute->getType();
-        if (!array_key_exists($fieldType, $this->fieldTypes)) {
-            throw new \LogicException(sprintf(
-                'Invalid attribute type (%s). Allowed types are %s.',
-                $fieldType,
-                implode(', ', array_keys($this->getFieldTypesNames()))
-            ));
-        }
-
         $options = $attribute->getOptions();
         $options['name'] = $attribute->getAttributeKey();
         $options['label'] = $attribute->getName();
@@ -143,7 +154,8 @@ class FormFactory
             $options['constraints'][] = new NotBlank();
         }
 
-        return $this->fieldTypes[$fieldType]->getFormBuilder($options);
+        return $this->getFieldType($attribute->getType())
+            ->getFormBuilder($options);
     }
 
     /**
@@ -158,15 +170,7 @@ class FormFactory
      */
     public function createAttributeConfigurationFormBuilder(AbstractAttribute $attribute, array $options = []): FormBuilderInterface
     {
-        $fieldType = $attribute->getType();
-        if (!array_key_exists($fieldType, $this->fieldTypes)) {
-            throw new \LogicException(sprintf(
-                'Invalid attribute type (%s). Allowed types are %s.',
-                $fieldType,
-                implode(', ', array_keys($this->getFieldTypesNames()))
-            ));
-        }
-
-        return $this->fieldTypes[$fieldType]->getConfigurationFormBuilder($attribute, $options);
+        return $this->getFieldType($attribute->getType())
+            ->getConfigurationFormBuilder($attribute, $options);
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace SecIT\ElasticFormBundle\ElasticForm\FieldType;
 
+use SecIT\ElasticFormBundle\Entity\AbstractAttribute;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 
@@ -41,4 +42,14 @@ interface TypeInterface extends DataTransformerInterface
      * @return FormBuilderInterface
      */
     public function getConfigurationFormBuilder($data = null, array $options = []): FormBuilderInterface;
+
+    /**
+     * Convert field type value to string representation.
+     *
+     * @param AbstractAttribute $attribute
+     * @param mixed             $value
+     *
+     * @return string
+     */
+    public function valueToString(AbstractAttribute $attribute, $value): string;
 }

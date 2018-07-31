@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace SecIT\ElasticFormBundle\ElasticForm\FieldType;
 
+use SecIT\ElasticFormBundle\Entity\AbstractAttribute;
 use SecIT\ElasticFormBundle\Form\AttributeConfiguration\KeyValueType;
 use Symfony\Component\Form\ChoiceList\Loader\CallbackChoiceLoader;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -52,6 +53,26 @@ class ChoiceType extends AbstractType
         }
 
         return $value ?: '';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function valueToString(AbstractAttribute $attribute, $value): string
+    {
+        $options = $this->optionsResolver->resolve(['name' => 'x', 'label' => 'x'] + $attribute->getOptions());
+        $choices = $options['choices'];
+
+        $strings = [];
+
+        $values = is_array($value) ? $value : [$value];
+        foreach ($values as $value) {
+            if (isset($choices[$value])) {
+                $strings[] = $choices[$value]['value'];
+            }
+        }
+
+        return implode(', ', $strings);
     }
 
     /**

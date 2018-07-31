@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace SecIT\ElasticFormBundle\ElasticForm\FieldType;
 
+use SecIT\ElasticFormBundle\Entity\AbstractAttribute;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -19,7 +20,7 @@ class YesNoType extends AbstractType
      */
     public function transform($value)
     {
-        return $value === '1';
+        return '1' === $value;
     }
 
     /**
@@ -28,6 +29,18 @@ class YesNoType extends AbstractType
     public function reverseTransform($value)
     {
         return $value ? '1' : '0';
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function valueToString(AbstractAttribute $attribute, $value): string
+    {
+        return $this->translator->trans(
+            'field.yes_no.string_value.'.($value ? 'yes' : 'no'),
+            [],
+            'elasticform'
+        );
     }
 
     /**
