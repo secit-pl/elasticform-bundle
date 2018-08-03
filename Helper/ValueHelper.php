@@ -56,7 +56,10 @@ class ValueHelper
     public function getValueAsString(AbstractElasticEntity $elasticEntity, AbstractAttribute $attribute): string
     {
         $fieldType = $this->formFactory->getFieldType($attribute->getType());
-        $value = $fieldType->transform($elasticEntity->getAttributeStrictTypeValue($attribute->getAttributeKey()));
+        $value = $fieldType->transform(
+            $elasticEntity->getAttributeStrictTypeValue($attribute->getAttributeKey()),
+            $attribute->getOptions()
+        );
 
         return $fieldType->valueToString($attribute, $value);
     }
