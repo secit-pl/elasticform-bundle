@@ -21,7 +21,7 @@ class DateType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function transform($value)
+    public function transform($value, array $options = [])
     {
         if ($value) {
             return new \DateTime($value);
@@ -33,7 +33,7 @@ class DateType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function reverseTransform($value)
+    public function reverseTransform($value, array $options = [])
     {
         if ($value instanceof \DateTime) {
             return $value->format('Y-m-d');

@@ -19,7 +19,7 @@ class NumberType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function transform($value)
+    public function transform($value, array $options = [])
     {
         if (null === $value) {
             return null;
@@ -31,7 +31,7 @@ class NumberType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function reverseTransform($value)
+    public function reverseTransform($value, array $options = [])
     {
         if (null === $value) {
             return null;

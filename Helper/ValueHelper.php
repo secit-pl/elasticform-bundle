@@ -42,7 +42,10 @@ class ValueHelper
     {
         return $this->formFactory
             ->getFieldType($attribute->getType())
-            ->transform($elasticEntity->getAttributeStrictTypeValue($attribute->getAttributeKey()));
+            ->transform(
+                $elasticEntity->getAttributeStrictTypeValue($attribute->getAttributeKey()),
+                $attribute->getOptions()
+            );
     }
 
     /**

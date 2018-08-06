@@ -24,10 +24,9 @@ class ChoiceType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function transform($value)
+    public function transform($value, array $options = [])
     {
-        $arguments = func_get_args();
-        if (isset($arguments[1]) && $arguments[1]['multiple']) {
+        if ($options['multiple']) {
             if (!$value) {
                 return [];
             }
@@ -41,10 +40,9 @@ class ChoiceType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function reverseTransform($value)
+    public function reverseTransform($value, array $options = [])
     {
-        $arguments = func_get_args();
-        if (isset($arguments[1]) && $arguments[1]['multiple']) {
+        if ($options['multiple']) {
             if (!$value) {
                 return [];
             }

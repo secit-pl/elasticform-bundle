@@ -73,7 +73,7 @@ abstract class AbstractType implements TypeInterface
     /**
      * {@inheritdoc}
      */
-    public function transform($value)
+    public function transform($value, array $options = [])
     {
         if (null === $value) {
             return '';
@@ -85,7 +85,7 @@ abstract class AbstractType implements TypeInterface
     /**
      * {@inheritdoc}
      */
-    public function reverseTransform($value)
+    public function reverseTransform($value, array $options = [])
     {
         if ('' === $value) {
             return null;

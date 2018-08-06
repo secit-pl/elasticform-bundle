@@ -18,7 +18,7 @@ class YesNoType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function transform($value)
+    public function transform($value, array $options = [])
     {
         return '1' === $value;
     }
@@ -26,7 +26,7 @@ class YesNoType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function reverseTransform($value)
+    public function reverseTransform($value, array $options = [])
     {
         return $value ? '1' : '0';
     }

@@ -6,7 +6,6 @@ namespace SecIT\ElasticFormBundle\ElasticForm\FieldType;
 
 use SecIT\ElasticFormBundle\Entity\AbstractAttribute;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\Form\DataTransformerInterface;
 
 /**
  * Interface TypeInterface.
