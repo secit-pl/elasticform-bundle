@@ -43,7 +43,7 @@ abstract class AbstractAttributeGroup implements TranslatableInterface
      *
      * @Assert\NotBlank()
      * @Assert\Length(max = 64)
-     * @Assert\Type("lower")
+     * @Assert\Regex("/^[a-z\_]+$/")
      */
     protected $groupKey;
 

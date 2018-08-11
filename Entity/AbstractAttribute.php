@@ -47,7 +47,7 @@ abstract class AbstractAttribute implements TranslatableInterface
      *
      * @Assert\NotBlank()
      * @Assert\Length(max = 128)
-     * @Assert\Type("lower")
+     * @Assert\Regex("/^[a-z\_]+$/")
      */
     protected $attributeKey;
 
