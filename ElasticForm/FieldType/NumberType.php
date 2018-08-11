@@ -79,8 +79,8 @@ class NumberType extends AbstractType
 
         $resolver->setAllowedTypes('scale', ['null', 'int']);
         $resolver->setAllowedTypes('placeholder', ['null', 'string']);
-        $resolver->setAllowedTypes('min_value', ['null', 'int']);
-        $resolver->setAllowedTypes('max_value', ['null', 'int']);
+        $resolver->setAllowedTypes('min_value', ['null', 'int', 'double']);
+        $resolver->setAllowedTypes('max_value', ['null', 'int', 'double']);
     }
 
     /**
