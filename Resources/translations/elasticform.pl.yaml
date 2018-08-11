@@ -17,6 +17,21 @@ field:
       min_choices:
         label: Minimalna ilość elementów do wyboru
 
+  country:
+    name: Lista krajów
+    options_form:
+      expanded:
+        label: Wyświetlaj jako przyciski
+
+      multiple:
+        label: Lista wielokrotnego wyboru
+
+      max_choices:
+        label: Maksymalna ilość krajów do wyboru
+
+      min_choices:
+        label: Minimalna ilość krajów do wyboru
+
   date:
     name: Data
     options_form:

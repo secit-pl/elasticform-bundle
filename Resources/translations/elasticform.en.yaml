@@ -17,6 +17,21 @@ field:
       min_choices:
         label: Minimum choices count
 
+  country:
+    name: Countries list
+    options_form:
+      expanded:
+        label: Expanded
+
+      multiple:
+        label: Multiselect
+
+      max_choices:
+        label: Maximum countries count
+
+      min_choices:
+        label: Minimum countries count
+
   date:
     name: Date
     options_form:
