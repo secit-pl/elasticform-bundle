@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace SecIT\ElasticFormBundle\ElasticForm\FieldType;
 
-use Doctrine\Common\Util\Inflector;
+use Doctrine\Common\Inflector\Inflector;
 use SecIT\ElasticFormBundle\Entity\AbstractAttribute;
 use SecIT\ElasticFormBundle\Form\AttributeConfigurationType;
 use Symfony\Component\Form\CallbackTransformer;
