@@ -95,7 +95,7 @@ class FormFactory
             throw new \LogicException(sprintf(
                 'Invalid attribute type (%s). Allowed types are %s.',
                 $name,
-                implode(', ', array_keys($this->getFieldTypesNames()))
+                implode(', ', $this->getFieldTypesNames())
             ));
         }
 
